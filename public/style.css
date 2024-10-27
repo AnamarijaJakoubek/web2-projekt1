@@ -1,0 +1,92 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #0056b3; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: bold;
+    margin-right: 10px; 
+}
+
+#logout-container {
+    display: flex;
+    align-items: center;
+}
+
+#logout-container button {
+    background-color: #f44336; 
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#logout-container button:hover {
+    background-color: #c62828; 
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+#ticket-count {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+.explanation-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e0eaff; 
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.explanation-container h2 {
+    margin-bottom: 10px;
+}
+
+.explanation-container p {
+    line-height: 1.6;
+}
+
+.explanation-container ul {
+    margin-top: 10px;
+    padding-left: 20px; 
+}

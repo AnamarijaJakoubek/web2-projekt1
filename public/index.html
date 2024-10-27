@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broj Ulaznica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="user-info">
+            <div class="user-avatar">U</div> 
+            <span>Username</span>
+        </div>
+        <div id="logout-container" style="display: none;">
+            <button onclick="logout()">Odjavi se</button>
+        </div>    
+    </div>
+
+    <div class="container">
+        <h1>Dobrodošli u aplikaciju za generiranje ulaznica!</h1>
+        <div id="ticket-count">Broj generiranih ulaznica: <span id="count">0</span></div>
+    </div>
+    
+<div class="explanation-container">
+    <h2>Kako se radi ulaznica:</h2>
+    <p>
+        Da biste generirali ulaznicu, slijedite ove korake:
+    </p>
+    
+    <ol>
+        <li>
+            <strong>Dobijanje JWT Tokena:</strong> 
+            Prvo, pošaljite POST zahtjev na 
+            <strong><i>https://dev-0m6ezck5okgu8bj4.us.auth0.com/oauth/token</i></strong>
+            kako biste dobili JSON Web Token (JWT).
+        </li>
+        
+        <li>
+            <strong>Generiranje ulaznice:</strong> 
+            Nakon što dobijete token, pošaljite POST zahtjev na 
+            <strong><i>http://localhost:3000/api/generateTicket</i></strong>. 
+            U zahtjevu dodajte token u **Authorization** zaglavlje koristeći format **Bearer Token**.
+        </li>
+        
+        <li>
+            <strong>Tijelo zahtjeva:</strong> 
+            U tijelu zahtjeva pošaljite JSON podatke koji sadrže:
+            <ul>
+                <li><strong>OIB (VATIN):</strong> Jedinstveni identifikacijski broj za fizičke ili pravne osobe.</li>
+                <li><strong>Ime:</strong> Ime osobe koja će koristiti ulaznicu.</li>
+                <li><strong>Prezime:</strong> Prezime osobe koja će koristiti ulaznicu.</li>
+            </ul>
+        </li>
+        
+        <li>
+            <strong>Ograničenje ulaznica:</strong> 
+            Za jedan OIB, dozvoljeno je generirati do tri (3) ulaznice.
+        </li>
+        
+        <li>
+            <strong>Generiranje QR Koda:</strong> 
+            Nakon što je ulaznica spremljena, generirat će se QR kod 
+            koji sadrži URL stranice s informacijama o ulaznici.
+        </li>
+    </ol>
+    Podatke o ulaznici korisnik može pogledati na http://localhost:3000//api/tickets/:ticketId.
+</div>
+
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
