@@ -2,7 +2,7 @@
   "name": "web2-projekt1",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "build": "npm run clean; tsc; npm run copy-views; npm run copy-views", 
     "clean": "rm -rf dist", 
