@@ -10,7 +10,10 @@ const { v4 : uuidv4 } = require('uuid');
 const QRCode = require('qrcode');
 const { auth, requiresAuth } = require('express-openid-connect');
 
-const port = process.env.PORT || 3000; 
+
+const externalUrl = process.env.RENDER_EXTERNAL_URL; 
+const port = externalUrl && process.env.PORT ? parseInt(process.env.PORT) : 4080;
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL, 
 });
@@ -21,7 +24,7 @@ const config = {
   authRequired: false,
   idpLogout: true,
   secret: process.env.SESSION_SECRET, 
-  baseURL: `http://localhost:${port}`,
+  baseURL: externalUrl || `http://localhost:${port}`,
   clientID: process.env.CLIENT_ID, 
   clientSecret: process.env.CLIENT_SECRET,
   issuerBaseURL: `https://${process.env.AUTH0_DOMAIN}`,
@@ -296,6 +299,15 @@ app.get('/logout', (req, res) => {
 });
 
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+if (externalUrl) { const hostname = '0.0.0.0'; //ne 127.0.0.1 
+  app.listen(port, hostname, () => { 
+    console.log(`Server locally running at http://${hostname}:${port}/ and from outside on ${externalUrl}`); 
+  });
+} else { 
+  https.createServer({ 
+    key: fs.readFileSync('server.key'), 
+    cert: fs.readFileSync('server.cert') }, app) 
+    .listen(port, function () { 
+      console.log(`Server running at https://localhost:${port}/`);
+   });
+}
