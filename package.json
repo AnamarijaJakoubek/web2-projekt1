@@ -4,10 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "npm run clean; tsc; npm run copy-views; npm run copy-views", 
+    "build": "npm run clean; tsc; npm run copy-public; npm run copy-public", 
     "clean": "rm -rf dist", 
-    "copy-views": "cp -r src/views/ dist/views/", 
-    "start": "node dist/08-webapp.js"
+    "copy-public": "cp -r src/public/ dist/public/", 
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
