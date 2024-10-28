@@ -95,6 +95,16 @@ app.post('/api/generateTicket', checkJwt, async (req, res) => {
     
     const ticketURL = `https://${req.get('host')}/api/tickets/${ticketId}`;
     const qrCode = await QRCode.toDataURL(ticketURL);
+
+    //-------
+    lastGeneratedTicket = {
+      ticketId,
+      firstName,
+      lastName,
+      vatin,
+      qrCode,
+    };
+    //------------
             
     res.json({ticketId, qrCode});
 
