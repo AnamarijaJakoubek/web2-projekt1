@@ -50,4 +50,36 @@ function initPage() {
     checkAuthStatus();
 }
 
+
+//-------------------
+async function fetchLastTicket() {
+    try {
+      const response = await fetch('/api/lastGeneratedTicket');
+      
+      if (!response.ok) {
+        console.log('Nema generirane ulaznice za prikaz.');
+        return;
+      }
+
+      const { ticketId, firstName, lastName, vatin, qrCode } = await response.json();
+
+      // Popuni elemente s podacima o ulaznici
+      document.getElementById('ticketId').textContent = ticketId;
+      document.getElementById('ticketFirstName').textContent = firstName;
+      document.getElementById('ticketLastName').textContent = lastName;
+      document.getElementById('ticketVatin').textContent = vatin;
+      document.getElementById('ticketQRCode').src = qrCode;
+
+      // Prikazi sekciju ulaznice
+      document.getElementById('ticketContainer').style.display = 'block';
+
+    } catch (error) {
+      console.error('Greška prilikom dohvata zadnje ulaznice:', error);
+    }
+  }
+
+  window.onload = fetchLastTicket;
+
+//==----------------------
+
 document.addEventListener('DOMContentLoaded', initPage);

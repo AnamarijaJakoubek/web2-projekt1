@@ -258,6 +258,17 @@ app.get('/api/tickets/:ticketId', requiresAuth(), async (req, res) => {
     res.status(500).json({ error: 'Server error' });  }
 });
 
+//-----
+let lastGeneratedTicket = null;
+app.get('/api/lastGeneratedTicket', (req, res) => {
+  if (!lastGeneratedTicket) {
+    return res.status(404).json({ error: 'Nema generirane ulaznice' });
+  }
+  res.json(lastGeneratedTicket);
+});
+///----
+
+
 app.get('/callback', async (req, res) => {
   const { access_token } = req.query; 
 
