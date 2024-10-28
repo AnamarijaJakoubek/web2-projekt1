@@ -24,7 +24,7 @@ const config = {
   authRequired: false,
   idpLogout: true,
   secret: process.env.SESSION_SECRET, 
-  baseURL: externalUrl || `http://localhost:${port}`,
+  baseURL: externalUrl || `https://localhost:${port}`,
   clientID: process.env.CLIENT_ID, 
   clientSecret: process.env.CLIENT_SECRET,
   issuerBaseURL: `https://${process.env.AUTH0_DOMAIN}`,
