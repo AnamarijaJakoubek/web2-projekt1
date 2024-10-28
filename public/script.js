@@ -55,13 +55,10 @@ async function fetchLastTicket() {
         return;
       }
 
-      const { ticketId, firstName, lastName, vatin, qrCode } = await response.json();
+      const { qrCode } = await response.json();
 
       // Popuni elemente s podacima o ulaznici
-      document.getElementById('ticketId').textContent = ticketId;
-      document.getElementById('ticketFirstName').textContent = firstName;
-      document.getElementById('ticketLastName').textContent = lastName;
-      document.getElementById('ticketVatin').textContent = vatin;
+   
       document.getElementById('ticketQRCode').src = qrCode;
 
       // Prikazi sekciju ulaznice
