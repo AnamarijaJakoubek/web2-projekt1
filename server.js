@@ -247,6 +247,7 @@ app.get('/api/tickets/:ticketId', requiresAuth(), async (req, res) => {
             <p><strong>Ime:</strong> ${firstName}</p>
             <p><strong>Prezime:</strong> ${lastName}</p>
             <p><strong>OIB (VATIN):</strong> ${vatin}</p>
+            <p><strong>Identifikator ulaznice:</strong> ${ticketId}</p>
             <p><strong>Stvoreno:</strong> ${createdAt}</p>
             
             <!-- Prikaz QR koda -->
