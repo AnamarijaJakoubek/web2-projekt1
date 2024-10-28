@@ -43,6 +43,10 @@ function hideUserElements() {
 
 
 async function logout() {
+    //------
+    const qrCodeElement = document.getElementById('qrCode'); // Id elementa sa QR kodom
+    if (qrCodeElement) qrCodeElement.style.display = 'none';
+    ///------
     window.location.href = '/logout';
 };
 
@@ -54,7 +58,7 @@ async function fetchLastTicket() {
       
       if (!response.ok) {
         console.log('Nema generirane ulaznice za prikaz.');
-        document.getElementById('ticketContainer').style.display = 'none';
+        document.getElementById('ticketContainer').style.display = 'one';
         return;
       }
 
