@@ -90,3 +90,13 @@ h1 {
     margin-top: 10px;
     padding-left: 20px; 
 }
+
+#ticketContainer {
+    max-width: 500px; /* Maksimalna širina */
+    margin: 0 auto; /* Centriranje pomoću automatskih margina */
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
