@@ -45,12 +45,6 @@ async function logout() {
 };
 
 
-function initPage() {
-    getTicketCount();
-    checkAuthStatus();
-}
-
-
 //-------------------
 async function fetchLastTicket() {
     try {
@@ -78,8 +72,17 @@ async function fetchLastTicket() {
     }
   }
 
-  window.onload = fetchLastTicket;
 
 //==----------------------
+
+
+function initPage() {
+    getTicketCount();
+    checkAuthStatus();
+    //---
+    fetchLastTicket();
+    //---
+}
+
 
 document.addEventListener('DOMContentLoaded', initPage);
