@@ -270,7 +270,11 @@ app.get('/api/lastGeneratedTicket', (req, res) => {
   if (!lastGeneratedTicket) {
     return res.status(404).json({ error: 'Nema generirane ulaznice' });
   }
-  res.json(lastGeneratedTicket);
+  const ticketToReturn = lastGeneratedTicket;
+
+  lastGeneratedTicket = null;
+
+  res.json(ticketToReturn);
 });
 ///----
 
