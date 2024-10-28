@@ -37,6 +37,8 @@ async function checkAuthStatus() {
 function hideUserElements() {
     document.getElementById('logout-container').style.display = 'none';
     document.querySelector('.user-info').style.display = 'none';
+    document.querySelector('.ticketContainer').style.display = 'none';
+
 }
 
 
@@ -56,12 +58,9 @@ async function fetchLastTicket() {
       }
 
       const { qrCode } = await response.json();
-
-      // Popuni elemente s podacima o ulaznici
    
       document.getElementById('ticketQRCode').src = qrCode;
 
-      // Prikazi sekciju ulaznice
       document.getElementById('ticketContainer').style.display = 'block';
 
     } catch (error) {
