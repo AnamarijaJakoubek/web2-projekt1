@@ -93,7 +93,7 @@ app.post('/api/generateTicket', checkJwt, async (req, res) => {
     await pool.query('INSERT INTO tickets (ticketId, vatin, firstName, lastName) VALUES ($1, $2, $3, $4)', 
                 [ticketId, vatin, firstName, lastName]);
     
-    const ticketURL = `https://${req.get('host')}/api/ticket/${ticketId}`;
+    const ticketURL = `https://${req.get('host')}/api/tickets/${ticketId}`;
     const qrCode = await QRCode.toDataURL(ticketURL);
             
     res.json({ticketId, qrCode});
@@ -124,7 +124,7 @@ app.get('/api/tickets/:ticketId', requiresAuth(), async (req, res) => {
     const userEmail = req.oidc.user.email; 
     const userId = req.oidc.user.sub; 
 
-    const ticketURL = `https://${req.get('host')}/api/ticket/${ticketId}`;
+    const ticketURL = `https://${req.get('host')}/api/tickets/${ticketId}`;
     const qrCode = await QRCode.toDataURL(ticketURL);
 
     res.status(200).send(`
