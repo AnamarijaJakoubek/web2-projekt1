@@ -98,10 +98,6 @@ app.post('/api/generateTicket', checkJwt, async (req, res) => {
 
     //-------
     lastGeneratedTicket = {
-      ticketId,
-      firstName,
-      lastName,
-      vatin,
       qrCode,
     };
     //------------
