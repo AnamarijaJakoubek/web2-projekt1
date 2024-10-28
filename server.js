@@ -124,7 +124,7 @@ app.get('/api/tickets/:ticketId', requiresAuth(), async (req, res) => {
     const userEmail = req.oidc.user.email; 
     const userId = req.oidc.user.sub; 
 
-    const ticketURL = `${req.protocol}://${req.get('host')}/ticket/${ticketId}`;
+    const ticketURL = `${req.protocol}://${req.get('host')}/api/ticket/${ticketId}`;
     const qrCode = await QRCode.toDataURL(ticketURL);
 
     res.status(200).send(`
