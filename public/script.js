@@ -54,6 +54,7 @@ async function fetchLastTicket() {
       
       if (!response.ok) {
         console.log('Nema generirane ulaznice za prikaz.');
+        document.getElementById('ticketContainer').style.display = 'none';
         return;
       }
 

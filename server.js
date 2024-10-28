@@ -311,7 +311,7 @@ app.get('/', (req, res) => {
 app.get('/logout', (req, res) => {
   console.log("odjava");
   //--
-  lastGeneratedTicket = null
+  lastGeneratedTicket = null;
   //----
   res.oidc.logout({
     returnTo: `${config.baseURL}` 
